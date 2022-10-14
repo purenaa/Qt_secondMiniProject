@@ -1,0 +1,337 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>OrderManagerForm</class>
+ <widget class="QWidget" name="OrderManagerForm">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>504</width>
+    <height>498</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout_2">
+   <item>
+    <widget class="QSplitter" name="splitter">
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+     <widget class="QTreeWidget" name="treeWidget">
+      <column>
+       <property name="text">
+        <string>Purchase Day</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Order ID</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Client Name</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Product Name</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Purchase Quantity</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Total Price</string>
+       </property>
+      </column>
+     </widget>
+     <widget class="QToolBox" name="toolBox">
+      <property name="currentIndex">
+       <number>0</number>
+      </property>
+      <widget class="QWidget" name="inputPage">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>0</y>
+         <width>378</width>
+         <height>428</height>
+        </rect>
+       </property>
+       <attribute name="label">
+        <string>Input</string>
+       </attribute>
+       <layout class="QVBoxLayout" name="verticalLayout_3">
+        <item>
+         <layout class="QFormLayout" name="formLayout">
+          <item row="0" column="0">
+           <widget class="QLabel" name="purchaseDayLabel">
+            <property name="text">
+             <string>Purchase &amp;Day</string>
+            </property>
+            <property name="buddy">
+             <cstring>purchaseDayDateEdit</cstring>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="0">
+           <widget class="QLabel" name="orderIDLablel">
+            <property name="text">
+             <string>&amp;Order ID</string>
+            </property>
+            <property name="buddy">
+             <cstring>orderIDLineEdit</cstring>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="1">
+           <widget class="QLineEdit" name="orderIDLineEdit">
+            <property name="readOnly">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="0">
+           <widget class="QLabel" name="clientNameLabel">
+            <property name="text">
+             <string>&amp;Client Name</string>
+            </property>
+            <property name="buddy">
+             <cstring>clientNameLineEdit</cstring>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="1">
+           <widget class="QLineEdit" name="clientNameLineEdit"/>
+          </item>
+          <item row="3" column="0">
+           <widget class="QLabel" name="productNameLabel">
+            <property name="text">
+             <string>Product Name</string>
+            </property>
+           </widget>
+          </item>
+          <item row="4" column="0">
+           <widget class="QLabel" name="purchaseQuantityLabel">
+            <property name="text">
+             <string>Purchase &amp;Quantity</string>
+            </property>
+            <property name="buddy">
+             <cstring>purchaseQuantityLineEdit</cstring>
+            </property>
+           </widget>
+          </item>
+          <item row="4" column="1">
+           <widget class="QLineEdit" name="purchaseQuantityLineEdit"/>
+          </item>
+          <item row="5" column="0">
+           <widget class="QLabel" name="totalPriceLabel">
+            <property name="text">
+             <string>Tota&amp;l Price</string>
+            </property>
+            <property name="buddy">
+             <cstring>totalPriceLineEdit</cstring>
+            </property>
+           </widget>
+          </item>
+          <item row="5" column="1">
+           <widget class="QLineEdit" name="totalPriceLineEdit"/>
+          </item>
+          <item row="0" column="1">
+           <widget class="QDateEdit" name="purchaseDayDateEdit">
+            <property name="dateTime">
+             <datetime>
+              <hour>21</hour>
+              <minute>0</minute>
+              <second>0</second>
+              <year>2022</year>
+              <month>10</month>
+              <day>13</day>
+             </datetime>
+            </property>
+           </widget>
+          </item>
+          <item row="3" column="1">
+           <widget class="QComboBox" name="productNameComboBox"/>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <widget class="QTreeWidget" name="clientTreeWidget">
+          <column>
+           <property name="text">
+            <string>Client Name</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>Phone Number</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>Address</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>Email</string>
+           </property>
+          </column>
+         </widget>
+        </item>
+        <item>
+         <widget class="QTreeWidget" name="productTreeWidget">
+          <column>
+           <property name="text">
+            <string notr="true">Product Name</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>Price</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>Inventory Amount</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string/>
+           </property>
+          </column>
+         </widget>
+        </item>
+        <item>
+         <layout class="QHBoxLayout" name="horizontalLayout_2">
+          <item>
+           <widget class="QPushButton" name="addPushButton">
+            <property name="text">
+             <string>Add</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="modifyPushButton">
+            <property name="text">
+             <string>Modify</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="searchPage">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>0</y>
+         <width>270</width>
+         <height>438</height>
+        </rect>
+       </property>
+       <attribute name="label">
+        <string>Search</string>
+       </attribute>
+       <layout class="QVBoxLayout" name="verticalLayout">
+        <item>
+         <widget class="QTreeWidget" name="searchTreeWidget">
+          <column>
+           <property name="text">
+            <string>Purchase Day</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>Order ID</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>Client Name</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>Product Name</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>Purchase Quantity</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>Total Price</string>
+           </property>
+          </column>
+         </widget>
+        </item>
+        <item>
+         <layout class="QHBoxLayout" name="horizontalLayout">
+          <item>
+           <widget class="QComboBox" name="searchComboBox">
+            <item>
+             <property name="text">
+              <string>Purchase Day Check</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>Order ID Check</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>Client Name Check</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>Product Name Check</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>Purchase Quantity Check</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>Total Price Check</string>
+             </property>
+            </item>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLineEdit" name="searchLineEdit"/>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <widget class="QPushButton" name="searchPushButton">
+          <property name="text">
+           <string>Search</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+     </widget>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
