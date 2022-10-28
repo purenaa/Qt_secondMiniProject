@@ -13,43 +13,63 @@
   <property name="windowTitle">
    <string>Form</string>
   </property>
-  <layout class="QVBoxLayout" name="verticalLayout_2">
+  <layout class="QVBoxLayout" name="verticalLayout_4">
    <item>
     <widget class="QSplitter" name="splitter">
      <property name="orientation">
       <enum>Qt::Horizontal</enum>
      </property>
-     <widget class="QTreeWidget" name="treeWidget">
-      <column>
-       <property name="text">
-        <string>Purchase Day</string>
-       </property>
-      </column>
-      <column>
-       <property name="text">
-        <string>Order ID</string>
-       </property>
-      </column>
-      <column>
-       <property name="text">
-        <string>Client Name</string>
-       </property>
-      </column>
-      <column>
-       <property name="text">
-        <string>Product Name</string>
-       </property>
-      </column>
-      <column>
-       <property name="text">
-        <string>Purchase Quantity</string>
-       </property>
-      </column>
-      <column>
-       <property name="text">
-        <string>Total Price</string>
-       </property>
-      </column>
+     <widget class="QWidget" name="">
+      <layout class="QVBoxLayout" name="verticalLayout_2">
+       <item>
+        <widget class="QLabel" name="orderInfoLabel">
+         <property name="font">
+          <font>
+           <family>Dubai</family>
+           <pointsize>20</pointsize>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="text">
+          <string>Order Information</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QTreeWidget" name="treeWidget">
+         <column>
+          <property name="text">
+           <string>Purchase Day</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>Order ID</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>Client Name</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>Product Name</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>Purchase Quantity</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>Total Price</string>
+          </property>
+         </column>
+        </widget>
+       </item>
+      </layout>
      </widget>
      <widget class="QToolBox" name="toolBox">
       <property name="currentIndex">
@@ -60,8 +80,8 @@
         <rect>
          <x>0</x>
          <y>0</y>
-         <width>378</width>
-         <height>428</height>
+         <width>260</width>
+         <height>438</height>
         </rect>
        </property>
        <attribute name="label">
@@ -80,6 +100,29 @@
             </property>
            </widget>
           </item>
+          <item row="0" column="1">
+           <widget class="QDateEdit" name="purchaseDayDateEdit">
+            <property name="enabled">
+             <bool>true</bool>
+            </property>
+            <property name="readOnly">
+             <bool>false</bool>
+            </property>
+            <property name="dateTime">
+             <datetime>
+              <hour>15</hour>
+              <minute>0</minute>
+              <second>0</second>
+              <year>2022</year>
+              <month>10</month>
+              <day>11</day>
+             </datetime>
+            </property>
+            <property name="calendarPopup">
+             <bool>false</bool>
+            </property>
+           </widget>
+          </item>
           <item row="1" column="0">
            <widget class="QLabel" name="orderIDLablel">
             <property name="text">
@@ -92,6 +135,9 @@
           </item>
           <item row="1" column="1">
            <widget class="QLineEdit" name="orderIDLineEdit">
+            <property name="enabled">
+             <bool>false</bool>
+            </property>
             <property name="readOnly">
              <bool>true</bool>
             </property>
@@ -117,18 +163,18 @@
             </property>
            </widget>
           </item>
+          <item row="3" column="1">
+           <widget class="QComboBox" name="productNameComboBox"/>
+          </item>
           <item row="4" column="0">
            <widget class="QLabel" name="purchaseQuantityLabel">
             <property name="text">
              <string>Purchase &amp;Quantity</string>
             </property>
-            <property name="buddy">
-             <cstring>purchaseQuantityLineEdit</cstring>
-            </property>
            </widget>
           </item>
           <item row="4" column="1">
-           <widget class="QLineEdit" name="purchaseQuantityLineEdit"/>
+           <widget class="QSpinBox" name="purchaseQuantitySpinBox"/>
           </item>
           <item row="5" column="0">
            <widget class="QLabel" name="totalPriceLabel">
@@ -143,27 +189,29 @@
           <item row="5" column="1">
            <widget class="QLineEdit" name="totalPriceLineEdit"/>
           </item>
-          <item row="0" column="1">
-           <widget class="QDateEdit" name="purchaseDayDateEdit">
-            <property name="dateTime">
-             <datetime>
-              <hour>21</hour>
-              <minute>0</minute>
-              <second>0</second>
-              <year>2022</year>
-              <month>10</month>
-              <day>13</day>
-             </datetime>
-            </property>
-           </widget>
-          </item>
-          <item row="3" column="1">
-           <widget class="QComboBox" name="productNameComboBox"/>
-          </item>
          </layout>
         </item>
         <item>
+         <widget class="QLabel" name="clientInforLabel">
+          <property name="font">
+           <font>
+            <family>Dubai</family>
+            <pointsize>16</pointsize>
+            <bold>true</bold>
+           </font>
+          </property>
+          <property name="text">
+           <string>Client Information</string>
+          </property>
+         </widget>
+        </item>
+        <item>
          <widget class="QTreeWidget" name="clientTreeWidget">
+          <column>
+           <property name="text">
+            <string>Client ID</string>
+           </property>
+          </column>
           <column>
            <property name="text">
             <string>Client Name</string>
@@ -187,27 +235,51 @@
          </widget>
         </item>
         <item>
-         <widget class="QTreeWidget" name="productTreeWidget">
-          <column>
+         <widget class="QLabel" name="productInfoLabel">
+          <property name="font">
+           <font>
+            <family>Dubai</family>
+            <pointsize>16</pointsize>
+            <bold>true</bold>
+           </font>
+          </property>
+          <property name="text">
+           <string>Product Information</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QSplitter" name="splitter_2">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <widget class="QTreeWidget" name="productTreeWidget">
+           <column>
+            <property name="text">
+             <string notr="true">Product Name</string>
+            </property>
+           </column>
+           <column>
+            <property name="text">
+             <string>Price</string>
+            </property>
+           </column>
+           <column>
+            <property name="text">
+             <string>Inventory Amount</string>
+            </property>
+           </column>
+           <column>
+            <property name="text">
+             <string/>
+            </property>
+           </column>
+          </widget>
+          <widget class="QLabel" name="imageLabel">
            <property name="text">
-            <string notr="true">Product Name</string>
+            <string>image</string>
            </property>
-          </column>
-          <column>
-           <property name="text">
-            <string>Price</string>
-           </property>
-          </column>
-          <column>
-           <property name="text">
-            <string>Inventory Amount</string>
-           </property>
-          </column>
-          <column>
-           <property name="text">
-            <string/>
-           </property>
-          </column>
+          </widget>
          </widget>
         </item>
         <item>
@@ -235,7 +307,7 @@
         <rect>
          <x>0</x>
          <y>0</y>
-         <width>270</width>
+         <width>260</width>
          <height>438</height>
         </rect>
        </property>
