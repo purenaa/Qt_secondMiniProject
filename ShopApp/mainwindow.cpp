@@ -16,8 +16,6 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
 
-
-
     orderForm = new OrderManagerForm(this);
     orderForm->setWindowTitle(tr("Order Info"));
     connect(orderForm, SIGNAL(destroyed()), orderForm, SLOT(deleteLater()));
@@ -55,27 +53,22 @@ MainWindow::MainWindow(QWidget *parent)
     productForm->loadData();
     orderForm->loadData();
 
-//    chatClient = new ChatClient(0);
-//    serverForm->setWindowTitle(tr("Client Chat"));
-//    connect(serverForm, SIGNAL(destroyed()), serverForm, SLOT(deleteLater()));
-
-
-    QIcon iconClient = QIcon("clientImg.png");
+    QIcon iconClient = QIcon("clientImg.png");          //ClientInfo 아이콘
     ui->actionClient->setIcon(iconClient);
 
-    QIcon iconProduct = QIcon("productImg.jpg");
+    QIcon iconProduct = QIcon("productImg.jpg");        //ProductInfo 아이콘
     ui->actionProduct->setIcon(iconProduct);
 
-    QIcon iconOrder = QIcon("orderImg.png");
+    QIcon iconOrder = QIcon("orderImg.png");            //OrderInfo 아이콘
     ui->actionOrder->setIcon(iconOrder);
 
-    QIcon iconChat_Client = QIcon("chatImg.png");
+    QIcon iconChat_Client = QIcon("chatImg.png");       //ChatServer 아이콘
     ui->actionChat_Client->setIcon(iconChat_Client);
 
-    QIcon iconChat_Server = QIcon("serverImg.png");
+    QIcon iconChat_Server = QIcon("serverImg.png");     //ChatClient 아이콘
     ui->actionChatServer->setIcon(iconChat_Server);
 
-    QIcon iconQuit = QIcon("quitImg5.png");
+    QIcon iconQuit = QIcon("quitImg5.png");             //Quit 아이콘
     ui->actionQuit->setIcon(iconQuit);
 
     QMdiSubWindow *cw = ui->mdiArea->addSubWindow(clientForm);
@@ -114,7 +107,6 @@ void MainWindow::on_actionOrder_triggered()
 void MainWindow::on_mdiArea_subWindowActivated(QMdiSubWindow *orderupdate)
 {
     Q_UNUSED(orderupdate);
-//     if(update->widget() == orderForm)
      emit orderForm->sig_requestProductNames();
 }
 

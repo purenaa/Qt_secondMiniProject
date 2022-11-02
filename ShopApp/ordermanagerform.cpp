@@ -35,8 +35,8 @@ OrderManagerForm::OrderManagerForm(QWidget *parent)                 //생성자
     ui->treeWidget->header()->resizeSection(0, 100);                //Purchase Day size
     ui->treeWidget->header()->resizeSection(1, 65);                 //Order ID size
     ui->treeWidget->header()->resizeSection(2, 65);                 //Client Name size
-    ui->treeWidget->header()->resizeSection(3, 220);                //Product Name size
-    ui->treeWidget->header()->resizeSection(4, 50);                 //Purchase Quantity size
+    ui->treeWidget->header()->resizeSection(3, 210);                //Product Name size
+    ui->treeWidget->header()->resizeSection(4, 55);                 //Purchase Quantity size
     ui->treeWidget->header()->resizeSection(5, 70);                 //Total Price size
     //searchTreeWidget size 변경
     ui->searchTreeWidget->header()->resizeSection(0, 80);           //Purchase Day size
@@ -161,13 +161,13 @@ void OrderManagerForm::on_addPushButton_clicked()                   //Add(고객
 
     /*order에서 입력한 고객 이름이 client의 고객 정보에 없다. 즉, 등록된 고객이 없을 경우 경고창이 나타난다.*/
     if(this->clientID == -2) {
-        QMessageBox::critical(this, "Client Search", "등록되지 않은 회원입니다.");
+        QMessageBox::critical(this, "Client Search", "등록되지 않은 고객입니다.");
         return;
     }
 
     /* 동명이인일 경우 해당 이름을 가진 고객들이 clientTreeWidget에 나타나게 되고 그 중 해당 고객 1명을 선택하지 않으면 경고창이 나타난다. */
     if(this->clientID == -1) {
-        QMessageBox::information(this, "Client Select", "회원이 선택되지 않았습니다. 선택 후 다시 시도해주세요.");
+        QMessageBox::information(this, "Client Select", "고객이 선택되지 않았습니다. 선택 후 다시 시도해주세요.");
         return;
     }
 
@@ -177,11 +177,15 @@ void OrderManagerForm::on_addPushButton_clicked()                   //Add(고객
         ui->treeWidget->addTopLevelItem(order);                     //treeWidget에 order를 최상위 항목으로 추가
         emit sig_reduceInventoryAmount(productName, purchaseQuantity);
     }
-    ui->clientNameLineEdit->setText("");                            //Add 버튼을 누르고 나서 clientNameLineEdit을 공백으로 비워줌
+    ui->orderIDLineEdit->setText("");                               //Add 버튼을 누르고 나서 orderIDLineEdit을 공백으로 비워줌
+    ui->clientNameLineEdit->setText("");                            //lientNameLineEdit을 공백으로 비워줌
     ui->purchaseQuantitySpinBox->setValue(0);                       //purchaseQuantitySpinBox의 값을 0으로 바꿔줌
     ui->totalPriceLineEdit->setText("");                            //totalPriceLineEdit을 공백으로 비워줌
 
     this->clientID = -1;
+
+    ui->clientTreeWidget->clear();
+    ui->productTreeWidget->clear();
 }
 
 
@@ -342,4 +346,14 @@ void OrderManagerForm::on_purchaseQuantitySpinBox_valueChanged(int purchaseQuant
 }
 
 
+void OrderManagerForm::on_clearPushButton_clicked()                         //Clear 버튼을 눌렀을 때
+{
+    ui->clientTreeWidget->clear();
+    ui->productTreeWidget->clear();
+
+    ui->orderIDLineEdit->setText("");                                       //Add 버튼을 누르고 나서 orderIDLineEdit을 공백으로 비워줌
+    ui->clientNameLineEdit->setText("");                                    //lientNameLineEdit을 공백으로 비워줌
+    ui->purchaseQuantitySpinBox->setValue(0);                               //purchaseQuantitySpinBox의 값을 0으로 바꿔줌
+    ui->totalPriceLineEdit->setText("");
+}
 

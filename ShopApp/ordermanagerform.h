@@ -48,6 +48,8 @@ private slots:
 
 
 
+    void on_clearPushButton_clicked();
+
 signals:
     void sig_requestProductNames();
     void sig_requesSearchClient(QString);

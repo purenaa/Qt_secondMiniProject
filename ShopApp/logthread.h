@@ -14,7 +14,6 @@ public:
 
 private:
     void run();
-
     QList<QTreeWidgetItem*> itemList;
     QString filename;
 

@@ -19,7 +19,7 @@
      <property name="orientation">
       <enum>Qt::Horizontal</enum>
      </property>
-     <widget class="QWidget" name="">
+     <widget class="QWidget" name="layoutWidget">
       <layout class="QVBoxLayout" name="verticalLayout_3">
        <item>
         <widget class="QLabel" name="productInfoLabel">
@@ -136,6 +136,9 @@
            <widget class="QLabel" name="inventoryAmountLabel">
             <property name="text">
              <string>&amp;Inventory Amount</string>
+            </property>
+            <property name="buddy">
+             <cstring>inventoryAmountSpinBox</cstring>
             </property>
            </widget>
           </item>

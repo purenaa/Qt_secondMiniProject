@@ -26,7 +26,7 @@ ClientServerForm::ClientServerForm(QWidget *parent) :
     sizes << 120 << 500;
     ui->splitter->setSizes(sizes);
 
-    ui->clientTreeWidget->hideColumn(2);
+//    ui->clientTreeWidget->hideColumn(2);
 
     chatServer = new QTcpServer(this);
     connect(chatServer, SIGNAL(newConnection( )), SLOT(clientConnect( )));
@@ -140,7 +140,7 @@ void ClientServerForm::receiveData( )
                 sendArray.clear();
                 QDataStream out(&sendArray, QIODevice::WriteOnly);
                 out << Chat_Talk;
-                sendArray.append("<font color=lightsteelblue>");
+                sendArray.append("<font color=darkCyan>");
                 sendArray.append(clientNameHash[port].toStdString().data());
                 sendArray.append("</font> : ");
                 sendArray.append(name.toStdString().data());
@@ -347,16 +347,16 @@ void ClientServerForm::readClient()
     }
 }
 
-//treeWidget을 반복문으로 돌면서 해당 이름이 있는지, 있다면 이미 로그인 되어 있는지 없는지 확인한다.
+//treeWidget을 반복문으로 돌면서 해당 이름이 있는지, 있다면 이미 로그인 되어 있는지 없는지 확인
 void ClientServerForm::slot_checkLogin(QString name, int id)
 {
     for(int i=0; i < ui->clientTreeWidget->topLevelItemCount(); i++)
     {
-        if(ui->clientTreeWidget->topLevelItem(i)->text(1) == name)    //같은 이름이 있는지  topLevelItem: 뒤에 있는 index 값을 가져오는 것
+        if(ui->clientTreeWidget->topLevelItem(i)->text(1) == name)    //같은 이름이 있는지  //topLevelItem: 뒤에 있는 index 값을 가져오는 것
         {
             if(ui->clientTreeWidget->topLevelItem(i)->text(2) == "X")     //로그인 되어 있는지 없는지
             {
-                            //(int login, int id)
+                                                 //(int login, int id)
                 emit sig_checkLogin(1, id);      //이 경우에만 로그인 가능하니까 가능 여부를 다시 chatClient로 시그널을 보내주자.    //정상적인 로그인
                 return;
             }
@@ -367,7 +367,7 @@ void ClientServerForm::slot_checkLogin(QString name, int id)
             }
         }
     }
-    emit sig_checkLogin(3, id);     //만약 위해서 안 걸렸다면 false로 반환하자.    //등록된 회원이 아닌 경우
+    emit sig_checkLogin(3, id);     //만약 위해서 안 걸렸다면 false로 반환    //등록된 회원이 아닌 경우
 }
 
 void ClientServerForm::slot_updateClientInfo(QString clientName)
@@ -389,50 +389,8 @@ void ClientServerForm::slot_updateClientInfo(QString clientName)
 }
 
 
-void ClientServerForm::on_clearPushButton_clicked()
+void ClientServerForm::on_clearPushButton_clicked()     //clear 버튼을 눌렀을 때
 {
-    ui->messageTreeWidget->clear();
-}
-
-
-void ClientServerForm::loadData()
-{
-//    QFile file("chatList.txt");
-//    if (!file.open(QIODevice::ReadOnly | QIODevice::Text))
-//        return;
-
-//    QTextStream in(&file);      //QTextStream 클래스는 텍스트를 읽고 쓰기에 편리한 인터페이스를 제공합니다.
-//    while (!in.atEnd()) {
-//        QString line = in.readLine();
-//        QTextStream out(&file);
-//        for (int i = 0 ; i < ui->messageTreeWidget->topLevelItemCount(); i ++)
-//        {
-//            ui->messageTreeWidget->topLevelItem(i);
-//        }
-//    }
-//    file.close( );
-}
-
-
-
-void ClientServerForm::on_savePushButton_clicked()
-{
-//    if(ui->messageTreeWidget == nullptr)
-//        return;
-
-//    QFile file("chatList.txt");       //QFile 클래스는 파일을 읽고 쓸 수 있는 인터페이스를 제공합니다.
-//    if (!file.open(QIODevice::WriteOnly | QIODevice::Text))
-//        return;
-
-//    QTextStream out(&file);
-//    for (int i = 0 ; i < ui->messageTreeWidget->topLevelItemCount(); i ++)
-//    {
-//        auto item = ui->messageTreeWidget->topLevelItem(i);
-
-//        out << item->text(0) << "," <<  item->text(1);
-//        out << item->text(2) << "," <<  item->text(3);
-//        out << item->text(4) << "," <<  item->text(5) << "\n";
-//    }
-//    file.close( );
+    ui->messageTreeWidget->clear();                     //messageTreeWidget 초기화
 }
 

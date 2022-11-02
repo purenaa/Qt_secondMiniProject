@@ -33,7 +33,6 @@ class ClientServerForm : public QWidget
 public:
     explicit ClientServerForm(QWidget *parent = nullptr);
     ~ClientServerForm();
-    void loadData();
 
 private:
     const int BLOCK_SIZE = 1024;
@@ -55,13 +54,9 @@ private:
     QByteArray inBlock;
     LogThread* logThread;
 
-
-
-
 private slots:
     void acceptConnection();                /* 파일 서버 */
     void readClient();
-
     void clientConnect( );                  /* 채팅 서버 */
     void receiveData( );
     void removeClient( );
@@ -69,21 +64,14 @@ private slots:
     void inviteClient();
     void kickOut();
     void on_clientTreeWidget_customContextMenuRequested(const QPoint &pos);
-
     //이름을 넘겨 받아 그 사람이 로그인 가능한지 확인하는 slot을 만든다.
     void slot_checkLogin(QString, int);
-
     void slot_updateClientInfo(QString);
     void slot_updateModifyClient(int, int, QString);
-
     void on_clearPushButton_clicked();
 
-    void on_savePushButton_clicked();
-
 signals:
-    //로그인 가능한지 여부를 false, true로 인자를 넘긴다.
-    void sig_checkLogin(int, int);
-
+    void sig_checkLogin(int, int);          //로그인 가능한지 여부를 false, true로 인자를 넘긴다.
 };
 
 #endif // CHATSERVERFORM_H
